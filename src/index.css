@@ -5,6 +5,18 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+
+  --font-semi-bold: 600;
+  --font-medium: 500;
+  --font-regular: 400;
+  --font-light: 300;
+
+  --main-color-green: #5ECE7B;
+  --main-color-dark: #1D1F22;
+  --disable-color: #8D8F9A;
+
+
 }
 
 code {

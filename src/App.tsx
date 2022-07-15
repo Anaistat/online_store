@@ -1,11 +1,13 @@
 import React from 'react';
-import './App.css';
+import './App.sass';
 import Header from "./Header/Header";
+import Category from "./Category/Category";
 
 function App() {
   return (
     <div className="App">
       <Header/>
+      <Category/>
     </div>
   );
 }

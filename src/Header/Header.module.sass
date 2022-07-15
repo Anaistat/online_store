@@ -1,0 +1,47 @@
+header
+  display: flex
+  justify-content: space-between
+  padding: 24px 101px 0 101px
+  box-sizing: border-box
+
+.menu, .right-section
+  list-style: none
+  margin: 0
+  padding: 0
+  display: flex
+
+  &__category
+    margin-right: 16px
+    font-size: 16px
+    font-weight: var(--font-regular)
+    color: var(--main-color-dark)
+    cursor: pointer
+    padding-bottom: 32px
+
+    &--active
+      font-weight: var(--font-semi-bold)
+      color: var(--main-color-green)
+      border-bottom: 2px solid var(--main-color-green)
+
+
+.right-section
+  &__currency
+    font-size: 18px
+    font-weight: var(--font-medium)
+    margin-right: 22px
+
+    &:after
+      content: ''
+      display: inline-block
+      width: 6px
+      height: 6px
+      margin-left: 6px
+      border-bottom: 1.5px solid currentColor
+      border-left: 1.5px solid currentColor
+      transform: rotate(-45deg) translate(50%, 0%)
+      transform-origin: center center
+      transition: transform ease-in-out 100ms
+
+  &__currency a, &__cart a
+    text-decoration: none
+    color: var(--main-color-dark)
