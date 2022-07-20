@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, {FC, useState} from 'react';
 import style from './Item.module.sass'
 
 interface ItemProps{
@@ -9,20 +9,11 @@ interface ItemProps{
 }
 
 const Item:FC<ItemProps> = ({name, price, image, sizes}) => {
+
+    const [itemsCount, setItemsCount] = useState<number>(0)
+
     return (
         <div className={style.item}>
-            {/*<div className={style['item__info']}>*/}
-            {/*    <p className={style['name']}>{name}</p>*/}
-            {/*    <p className={style['price']}>{price}</p>*/}
-            {/*</div>*/}
-            {/*<div className={style['item__count']}>*/}
-
-            {/*</div>*/}
-            {/*<div>*/}
-            {/*    <img src={image} alt="item" width='105' height='137'/>*/}
-            {/*</div>*/}
-
-
             <div className={style['item__info']}>
                 <p className={style['name']}>{name}</p>
                 <p className={style['price']}>{price}</p>
@@ -35,9 +26,15 @@ const Item:FC<ItemProps> = ({name, price, image, sizes}) => {
                 </ul>
             </div>
             <div className={style['item__count']}>
-                <button className={style['count-button']}>+</button>
-                <input type="text" className={style['count-input']}/>
-                <button className={style['count-button']}>-</button>
+                <button className={style['count-button']} onClick={()=>setItemsCount(prev=>prev + 1)}>+</button>
+                <input
+                    type="text"
+                    inputMode='numeric'
+                    pattern='*'
+                    className={style['count-input']}
+                    value={itemsCount}
+                    onChange={e=>setItemsCount(+e.target.value)}/>
+                <button className={style['count-button']} onClick={()=>setItemsCount(prev=>prev === 0?prev:prev - 1)}>-</button>
             </div>
             <div className={style['item__image']}>
                 <img src={image} alt="item" width='105' height='137'/>

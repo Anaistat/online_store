@@ -1,3 +1,22 @@
+@keyframes fadeIn
+  from
+    opacity: 0
+    visibility: hidden
+
+  to
+    opacity: 1
+    visibility: visible
+
+
+@keyframes fadeOut
+  from
+    opacity: 1
+    visibility: visible
+
+  to
+    opacity: 0
+    visibility: hidden
+
 .modal
   position: fixed
   z-index: 1000
@@ -6,9 +25,13 @@
   bottom: 0
   left: 0
   right: 0
+  animation: ease-out 0.2s forwards fadeOut
+
+  &--opened
+    animation: ease-out 0.2s forwards fadeIn
 
 .cart
-  padding: 8px 16px
+  padding: 8px 16px 20px 16px
   box-sizing: border-box
   background-color: #ffffff
   position: absolute
@@ -20,3 +43,28 @@
 
   &__items
     font-weight: var(--font-medium)
+
+.total
+  display: flex
+  justify-content: space-between
+  margin: 42px 0 35px 0
+
+  &__title
+    margin: 0
+    font-weight: var(--font-medium)
+    font-size: 16px
+
+  &__price
+    margin: 0
+    font-weight: var(--font-bold)
+    font-size: 16px
+
+.buttons
+  margin: 0
+  padding: 0
+  list-style: none
+  display: flex
+  justify-content: space-between
+
+  &>li
+    width: 48%

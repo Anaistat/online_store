@@ -1,11 +1,16 @@
 .category
   padding: 80px 101px 0 101px
 
+  a
+    text-decoration: none
+    color: var(--main-color-dark)
+
   &__name
     font-size: 42px
     font-weight: var(--font-regular)
 
   &__products
-    display: flex
-    flex-wrap: wrap
-    justify-content: space-between
+    width: 100%
+    display: grid
+    grid-template-columns: repeat(auto-fill, minmax(420px, 1fr))
+    grid-gap: 40px
