@@ -1,0 +1,29 @@
+@keyframes fadeIn
+  from
+    opacity: 0
+    visibility: hidden
+
+  to
+    opacity: 1
+    visibility: visible
+
+
+@keyframes fadeOut
+  from
+    opacity: 1
+    visibility: visible
+
+  to
+    opacity: 0
+    visibility: hidden
+
+.context
+  position: absolute
+  box-sizing: border-box
+  box-shadow: 0 4px 35px rgba(168, 172, 176, 0.19)
+  right: 78px
+  top: 65px
+  animation: ease-out 0.2s forwards fadeOut
+
+  &--opened
+    animation: ease-out 0.2s forwards fadeIn
