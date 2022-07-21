@@ -18,15 +18,9 @@ const CartModal:FC<CartProps> = ({isOpen, setIsOpen, className}) => {
         classes.push(style['modal--opened'])
     }
 
-    const stop = (e:React.MouseEvent) =>{
-        console.log(e)
-        e.stopPropagation()
-        setIsOpen(false)
-    }
-
     return (
-        <div className={classes.join(' ')} onClick={e=>stop(e)}>
-            <div className={style['cart']}>
+        <div className={classes.join(' ')} onClick={()=>setIsOpen(false)}>
+            <div className={style['cart']} onClick={e=>e.stopPropagation()}>
                 <h1 className={style['cart__bag']}>My bag,
                     <span className={style['cart__items']}> 2 items</span>
                 </h1>
