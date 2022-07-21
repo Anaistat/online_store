@@ -11,7 +11,7 @@ const Category = () => {
         <div className={style.category}>
             <h1 className={style['category__name']}>Category name</h1>
             <div className={style['category__products']}>
-                <Link to='product/1'>
+                <Link to='/product/1'>
                     <ProductCard product='Apollo Running Short' price='$50' image={image1} isOutOfStock={false}/>
                 </Link>
                 <ProductCard product='Apollo Running Short' price='$50' image={image2} isOutOfStock={false}/>
