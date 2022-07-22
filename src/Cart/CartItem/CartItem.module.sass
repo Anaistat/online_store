@@ -1,0 +1,71 @@
+.cart-item
+  display: flex
+  justify-content: space-between
+  border-top: 1px solid #E5E5E5
+  border-bottom: 1px solid #E5E5E5
+  padding: 20px 0
+  box-sizing: border-box
+
+  b
+    font-size: 30px
+    font-weight: var(--font-semi-bold)
+
+  &__title
+    font-size: 30px
+    font-weight: var(--font-regular)
+    margin: 10px 0 0 0
+
+  &__price
+    font-size: 24px
+    font-weight: var(--font-semi-bold)
+
+  &__sizes
+    padding: 0
+    margin: 0
+    display: flex
+    list-style: none
+
+.size
+  border: 1px solid var(--main-color-dark)
+  width: 63px
+  height: 45px
+  display: grid
+  place-items: center
+  font-size: 16px
+  font-weight: var(--font-regular)
+  margin-right: 12px
+  cursor: pointer
+
+.count-and-image
+  display: flex
+  padding: 0 0 18px 0
+
+  &__count
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    align-items: center
+
+  &__image
+    margin-left: 12px
+
+.count-input
+  width: 20px
+  padding-left: 6px
+  box-sizing: border-box
+  border: none
+  font-size: 16px
+  font-weight: var(--font-medium)
+
+  &:focus
+    outline: none
+
+
+.count-button
+  cursor: pointer
+  background: none
+  width: 45px
+  height: 45px
+  border: 1px solid var(--main-color-dark)
+  font-size: 18px
+  font-weight: var(--font-light)

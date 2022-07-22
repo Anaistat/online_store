@@ -9,12 +9,20 @@ interface ButtonProps{
     backgroundColor: string
     link: string
     className?: string
+    onClick?: (e:React.MouseEvent<HTMLButtonElement>) => void
 }
 
-const Button:FC<ButtonProps> = ({title, outline, color, link, className, backgroundColor}) => {
+const Button:FC<ButtonProps> = ({
+    title,
+    outline,
+    color,
+    link,
+    className,
+    backgroundColor,
+    onClick}) => {
     return (
         <Link to={link}>
-            <button className={[style.button, className].join(' ')} style={{
+            <button onClick={onClick} className={[style.button, className].join(' ')} style={{
                 backgroundColor: backgroundColor,
                 outline: outline,
                 color: color

@@ -37,7 +37,8 @@ const CartModal:FC<CartProps> = ({isOpen, setIsOpen, className}) => {
                             outline='1px solid var(--main-color-dark)'
                             color='var(--main-color-dark)'
                             backgroundColor='#ffffff'
-                            link='/'
+                            link='/cart'
+                            onClick={()=>setIsOpen(false)}
                         />
                     </li>
                     <li>
