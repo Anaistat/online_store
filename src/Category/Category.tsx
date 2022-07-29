@@ -3,22 +3,44 @@ import style from './Category.module.sass'
 import image1 from '../Category/ProductCard/images/Image.png'
 import image2 from '../Category/ProductCard/images/Image1.png'
 import image3 from '../Category/ProductCard/images/Image2.png'
+import image4 from '../Category/ProductCard/images/image3.png'
 import ProductCard from "./ProductCard/ProductCard";
-import {Link} from "react-router-dom";
 
 const Category = () => {
+
+
     return (
         <div className={style.category}>
             <h1 className={style['category__name']}>Category name</h1>
             <div className={style['category__products']}>
-                <Link to='/product/1'>
-                    <ProductCard product='Apollo Running Short' price='$50' image={image1} isOutOfStock={false}/>
-                </Link>
-                <ProductCard product='Apollo Running Short' price='$50' image={image2} isOutOfStock={false}/>
-                <ProductCard product='Apollo Running Short' price='$50' image={image3} isOutOfStock={true}/>
-                <ProductCard product='Apollo Running Short' price='$50' image={image3} isOutOfStock={false}/>
-                <ProductCard product='Apollo Running Short' price='$50' image={image2} isOutOfStock={false}/>
-                <ProductCard product='Apollo Running Short' price='$50' image={image1} isOutOfStock={false}/>
+                <ProductCard product={{
+                    name: 'Apollo Running Short',
+                    price: 50,
+                    images: [image1],
+                    description: '',
+                    sizes: ['S', 'M']
+                }} isOutOfStock={false}/>
+                <ProductCard product={{
+                    name: 'Apollo Running Sweater',
+                    price: 70,
+                    images: [image2],
+                    description: '',
+                    sizes: ['S', 'M']
+                }} isOutOfStock={false}/>
+                <ProductCard product={{
+                    name: 'Apollo Running Glasses',
+                    price: 20,
+                    images: [image4],
+                    description: '',
+                    sizes: ['S', 'M']
+                }} isOutOfStock={false}/>
+                <ProductCard product={{
+                    name: 'Apollo Running Jacket',
+                    price: 120,
+                    images: [image3],
+                    description: '',
+                    sizes: ['S', 'M']
+                }} isOutOfStock={true}/>
             </div>
         </div>
     );

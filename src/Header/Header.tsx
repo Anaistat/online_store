@@ -3,8 +3,10 @@ import style from './Header.module.sass'
 import ContextMenu from "../ContextMenu/ContextMenu";
 import CartModal from "../CartModal/CartModal";
 import {Link} from "react-router-dom";
+import Products from "../store/Products";
+import {observer} from "mobx-react-lite";
 
-const Header = () => {
+const Header = observer(() => {
 
     const [isOpenContext, setIsOpenContext] = useState<boolean>(false)
     const [isOpenCart, setIsOpenCart] = useState<boolean>(false)
@@ -19,13 +21,55 @@ const Header = () => {
         setIsOpenCart(false)
     }
 
+    const [activeMenuItem, setActiveMenuItem] = useState({content: 'Women', left: 101, width: 58})
+    const [currency, setCurrency] = useState<string>('$')
+
     return (
         <header>
             <ul className={style.menu}>
-                <li className={[style['menu__category'], style['menu__category--active']].join(' ')}>Women</li>
-                <li className={style['menu__category']}>Men</li>
-                <li className={style['menu__category']}>Kids</li>
+                <li
+                    className={[style['menu__category'], activeMenuItem.content === 'Women'?style['menu__category--active']:''].join(' ')}
+                    onClick={(e )=>{
+                        const li = e.target as HTMLLIElement
+                        setActiveMenuItem(
+                            {content: li.innerText,
+                                left: li.getBoundingClientRect().left,
+                                width: li.getBoundingClientRect().width}
+                        )
+                    }}>
+                    Women
+                </li>
+                <li
+                    className={[style['menu__category'], activeMenuItem.content === 'Men'?style['menu__category--active']:''].join(' ')}
+                    onClick={(e )=>{
+                        const li = e.target as HTMLLIElement
+                        setActiveMenuItem(
+                            {content: li.innerText,
+                                left: li.getBoundingClientRect().left,
+                                width: li.getBoundingClientRect().width}
+                        )
+                    }}>
+                    Men
+                </li>
+                <li
+                    className={[style['menu__category'], activeMenuItem.content === 'Kids'?style['menu__category--active']:''].join(' ')}
+                    onClick={(e )=>{
+                        const li = e.target as HTMLLIElement
+                        setActiveMenuItem(
+                            {content: li.innerText,
+                                left: li.getBoundingClientRect().left,
+                                width: li.getBoundingClientRect().width}
+                        )
+                    }}>
+                    Kids
+                </li>
+
             </ul>
+
+            <div className={style['line']} style={{
+                left: activeMenuItem.left,
+                width: activeMenuItem.width
+            }}/>
 
             <div className={style.logo}>
                 <Link to='/'>
@@ -51,7 +95,7 @@ const Header = () => {
 
             <ul className={style['right-section']}>
                 <li className={style['right-section__currency']} onClick={openContext}>
-                    <a href="#">$</a>
+                    <a href="#">{currency}</a>
                 </li>
                 <li className={style['right-section__cart']} onClick={openModal}>
                     <a href="#">
@@ -63,8 +107,21 @@ const Header = () => {
                     </a>
                 </li>
             </ul>
+            {
+                Products.productsMap.size !== 0
+                ?
+                    <div className={style['items-in-cart']}>
+                        <span>{Products.productsMap.size}</span>
+                    </div>
+                :
+                    <></>
+            }
             <ContextMenu isOpen={isOpenContext} setIsOpen={setIsOpenContext}>
-                <ul className={style['currency-list']}>
+                <ul className={style['currency-list']} onClick={(e)=>{
+                    const li = e.target as HTMLLIElement
+                    setCurrency(li.innerText.split(' ')[0])
+                    setIsOpenContext(false)
+                }}>
                     <li className={style['currency-list__item']}>$ USD</li>
                     <li className={style['currency-list__item']}>€ EUR</li>
                     <li className={style['currency-list__item']}>¥ JPY</li>
@@ -73,6 +130,6 @@ const Header = () => {
             <CartModal isOpen={isOpenCart} setIsOpen={setIsOpenCart}/>
         </header>
     );
-};
+});
 
 export default Header;

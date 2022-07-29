@@ -1,5 +1,6 @@
-import React, {FC, PropsWithChildren} from 'react';
+import React, {FC, PropsWithChildren, useRef} from 'react';
 import style from './ContextMenu.module.sass'
+import {useOnOutsideClick} from "../hooks/useOnOutsideClick";
 
 interface ModalProps extends PropsWithChildren{
     className?: string,
@@ -18,8 +19,12 @@ const ContextMenu:FC<ModalProps> = ({
         classes.push(style['context--opened'])
     }
 
+    const contextRef = useRef(null)
+    // useOnOutsideClick(contextRef, ()=>setIsOpen(false))
+
+
     return (
-        <div className={classes.join(' ')}>
+        <div className={classes.join(' ')} ref={contextRef}>
             {
                 children
             }

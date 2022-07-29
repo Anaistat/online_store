@@ -1,28 +1,35 @@
 import React, {FC, useState} from 'react';
 import style from './CartItem.module.sass'
+import Product from "../../types";
 
 interface CartItemProps{
-    images: string[]
-    title: string
-    sizes: string[]
-    price: string
+    product: Product
+    amount: number
 }
 
-const CartItem:FC<CartItemProps> = ({images, sizes, title, price}) => {
+const CartItem:FC<CartItemProps> = ({product, amount}) => {
 
-    const [itemsCount, setItemsCount] = useState<number>(0)
+    const [itemsCount, setItemsCount] = useState<number>(amount)
+    const [activeSize, setActiveSize] = useState<string>('')
 
     return (
         <div className={style['cart-item']}>
             <div>
-                <b>{title.split(' ')[0]}</b>
+                <b>{product.name.split(' ')[0]}</b>
                 <h1 className={style['cart-item__title']}>
-                    {title.split(' ').splice(1).join(' ')}
+                    {product.name.split(' ').splice(1).join(' ')}
                 </h1>
-                <p className={style['cart-item__price']}>{price}</p>
+                <p className={style['cart-item__price']}>${product.price}</p>
                 <ul className={style['cart-item__sizes']}>
                     {
-                        sizes.map(size=><li className={style.size} key={size}>{size}</li>)
+                        product.sizes.map(size=>
+                            <li
+                                className={[style.size , size === activeSize?style['size--active']:''].join(' ')}
+                                key={size}
+                                onClick={()=>setActiveSize(size)}
+                            >
+                                {size}
+                            </li>)
                     }
                 </ul>
             </div>
@@ -46,7 +53,7 @@ const CartItem:FC<CartItemProps> = ({images, sizes, title, price}) => {
                         -
                     </button>
                 </div>
-                <img className={style['count-and-image__image']} src={images[0]} alt="item1" width='140' height='185'/>
+                <img className={style['count-and-image__image']} src={product.images[0]} alt="item1" width='140' height='185'/>
             </div>
         </div>
     );

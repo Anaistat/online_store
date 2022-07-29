@@ -1,27 +1,29 @@
-import React, {FC, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import style from './Item.module.sass'
+import Products from "../../store/Products";
+import Product from "../../types";
 
-interface ItemProps{
-    name: string
-    price: string
-    image: string
-    sizes: string[]
+interface Item{
+    product: Product
 }
 
-const Item:FC<ItemProps> = ({name, price, image, sizes}) => {
+const Item:FC<Item> = ({product}) => {
 
-    const [itemsCount, setItemsCount] = useState<number>(0)
+    const [itemsCount, setItemsCount] = useState<number>(1)
+    useEffect(()=>{
+        Products.changeItemAmount(product.name, itemsCount)
+    }, [itemsCount])
 
     return (
         <div className={style.item}>
             <div className={style['item__info']}>
-                <p className={style['name']}>{name}</p>
-                <p className={style['price']}>{price}</p>
+                <p className={style['name']}>{product.name}</p>
+                <p className={style['price']}>${product.price}</p>
             </div>
             <div className={style['item__sizes']}>
                 <ul className={style['sizes-list']}>
                     {
-                        sizes.map(size=><li key={size} className={style['sizes-list__size']}>{size}</li>)
+                        product.sizes.map(size=><li key={size} className={style['sizes-list__size']}>{size}</li>)
                     }
                 </ul>
             </div>
@@ -30,14 +32,14 @@ const Item:FC<ItemProps> = ({name, price, image, sizes}) => {
                 <input
                     type="text"
                     inputMode='numeric'
-                    pattern='*'
+                    pattern='[0-9]+'
                     className={style['count-input']}
                     value={itemsCount}
                     onChange={e=>setItemsCount(+e.target.value)}/>
                 <button className={style['count-button']} onClick={()=>setItemsCount(prev=>prev === 0?prev:prev - 1)}>-</button>
             </div>
             <div className={style['item__image']}>
-                <img src={image} alt="item" width='105' height='137'/>
+                <img src={product.images[0]} alt="item" width='105' height='137'/>
             </div>
         </div>
     );

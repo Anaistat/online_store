@@ -4,6 +4,7 @@ header
   padding: 24px 101px 0 101px
   box-sizing: border-box
   background-color: #ffffff
+  min-height: 78px
 
 .menu, .right-section
   list-style: none
@@ -18,11 +19,19 @@ header
     color: var(--main-color-dark)
     cursor: pointer
     padding-bottom: 32px
+    transition: all 0.2s ease-out
 
     &--active
       font-weight: var(--font-semi-bold)
       color: var(--main-color-green)
-      border-bottom: 2px solid var(--main-color-green)
+
+.line
+  position: absolute
+  min-width: 30px
+  height: 2px
+  background-color: var(--main-color-green)
+  top: 77px
+  transition: left 0.2s ease-out, width 0.2s ease-out
 
 
 .right-section
@@ -73,3 +82,18 @@ header
       transition: background-color 0.2s ease-out
 
 
+.items-in-cart
+  position: absolute
+  width: 20px
+  height: 20px
+  display: grid
+  place-items: center
+  padding: 1px
+  right: 88px
+  top: 16px
+  border-radius: 50%
+  box-sizing: border-box
+  background-color: var(--main-color-dark)
+  font-size: 14px
+  font-weight: var(--font-bold)
+  color: #ffffff

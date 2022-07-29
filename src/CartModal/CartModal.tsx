@@ -1,9 +1,9 @@
 import React, {FC} from 'react';
 import style from './CartModal.module.sass'
 import Item from "./ Item/Item";
-import item1 from '../Category/ProductCard/images/Image.png'
-import item2 from'../Category/ProductCard/images/image3.png'
 import Button from "../ui/Button/Button";
+import Products from "../store/Products";
+import {observer} from "mobx-react-lite";
 
 interface CartProps{
     isOpen: boolean
@@ -11,7 +11,7 @@ interface CartProps{
     className?: string
 }
 
-const CartModal:FC<CartProps> = ({isOpen, setIsOpen, className}) => {
+const CartModal:FC<CartProps> = observer(({isOpen, setIsOpen, className}) => {
 
     const classes = [style.modal, className]
     if(isOpen){
@@ -22,13 +22,15 @@ const CartModal:FC<CartProps> = ({isOpen, setIsOpen, className}) => {
         <div className={classes.join(' ')} onClick={()=>setIsOpen(false)}>
             <div className={style['cart']} onClick={e=>e.stopPropagation()}>
                 <h1 className={style['cart__bag']}>My bag,
-                    <span className={style['cart__items']}> 2 items</span>
+                    <span className={style['cart__items']}> {Products.products.length} item(s)</span>
                 </h1>
-                <Item name='Apollo Running Short' price='$ 50.00' image={item1} sizes={['S', 'M']}/>
-                <Item name='Jupiter Wayfarer' price='$ 50.00' image={item2} sizes={['S', 'M']}/>
+                {
+                    (Products.products).map(e=>
+                        <Item product={e}/>)
+                }
                 <div className={style.total}>
                     <h2 className={style['total__title']}>Total</h2>
-                    <p className={style['total__price']}>$100.00</p>
+                    <p className={style['total__price']}>${Products.totalPrice}</p>
                 </div>
                 <ul className={style.buttons}>
                     <li>
@@ -54,6 +56,6 @@ const CartModal:FC<CartProps> = ({isOpen, setIsOpen, className}) => {
             </div>
         </div>
     );
-};
+});
 
 export default CartModal;
