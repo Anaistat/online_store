@@ -19,12 +19,9 @@ const ContextMenu:FC<ModalProps> = ({
         classes.push(style['context--opened'])
     }
 
-    const contextRef = useRef(null)
-    // useOnOutsideClick(contextRef, ()=>setIsOpen(false))
-
 
     return (
-        <div className={classes.join(' ')} ref={contextRef}>
+        <div className={classes.join(' ')}>
             {
                 children
             }
