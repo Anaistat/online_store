@@ -1,7 +1,7 @@
 import React, {FC, useEffect, useState} from 'react';
 import style from './Item.module.sass'
-import Products from "../../store/Products";
-import Product from "../../types";
+import Products from "../../../store/Products";
+import Product from "../../../types";
 
 interface Item{
     product: Product
@@ -10,6 +10,7 @@ interface Item{
 const Item:FC<Item> = ({product}) => {
 
     const [itemsCount, setItemsCount] = useState<number>(1)
+    const [activeSize, setActiveSize] = useState<string>('S')
     useEffect(()=>{
         Products.changeItemAmount(product.name, itemsCount)
     }, [itemsCount])
@@ -23,7 +24,13 @@ const Item:FC<Item> = ({product}) => {
             <div className={style['item__sizes']}>
                 <ul className={style['sizes-list']}>
                     {
-                        product.sizes.map(size=><li key={size} className={style['sizes-list__size']}>{size}</li>)
+                        product.sizes.map(size=>
+                            <li key={size}
+                                className={[style['sizes-list__size'], size === activeSize?style['sizes-list__size--active']:''].join(' ')}
+                                onClick={()=>setActiveSize(size)}
+                            >
+                                {size}
+                            </li>)
                     }
                 </ul>
             </div>

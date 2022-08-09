@@ -1,11 +1,11 @@
 import React, {useRef, useState} from 'react';
 import style from './Header.module.sass'
-import ContextMenu from "../ContextMenu/ContextMenu";
-import CartModal from "../CartModal/CartModal";
+import ContextMenu from '../ContextMenu/ContextMenu'
+import CartModal from '../CartModal/CartModal'
 import {Link} from "react-router-dom";
-import Products from "../store/Products";
+import Products from "../../store/Products";
 import {observer} from "mobx-react-lite";
-import {useOnOutsideClick} from "../hooks/useOnOutsideClick";
+import {useOnOutsideClick} from "../../hooks/useOnOutsideClick";
 
 const Header = observer(() => {
 
@@ -98,7 +98,7 @@ const Header = observer(() => {
 
             <ul className={style['right-section']}>
                 <li className={style['right-section__currency']} onClick={openContext} ref={contextRef}>
-                    <a href="#">{currency}</a>
+                    <a href="src/components/Header/Header#">{currency}</a>
                 </li>
                 <li className={style['right-section__cart']} onClick={openModal}>
                     <a href="#">

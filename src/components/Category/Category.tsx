@@ -1,9 +1,9 @@
 import React from 'react';
 import style from './Category.module.sass'
-import image1 from '../Category/ProductCard/images/Image.png'
-import image2 from '../Category/ProductCard/images/Image1.png'
-import image3 from '../Category/ProductCard/images/Image2.png'
-import image4 from '../Category/ProductCard/images/image3.png'
+import image1 from './ProductCard/images/Image.png'
+import image2 from './ProductCard/images/Image1.png'
+import image3 from './ProductCard/images/Image2.png'
+import image4 from './ProductCard/images/image3.png'
 import ProductCard from "./ProductCard/ProductCard";
 
 const Category = () => {

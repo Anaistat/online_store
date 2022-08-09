@@ -1,6 +1,6 @@
 import React, {FC, PropsWithChildren, useRef} from 'react';
 import style from './ContextMenu.module.sass'
-import {useOnOutsideClick} from "../hooks/useOnOutsideClick";
+import {useOnOutsideClick} from "../../hooks/useOnOutsideClick";
 
 interface ModalProps extends PropsWithChildren{
     className?: string,

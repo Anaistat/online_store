@@ -1,8 +1,8 @@
 import React, {FC} from 'react';
 import style from './CartModal.module.sass'
 import Item from "./ Item/Item";
-import Button from "../ui/Button/Button";
-import Products from "../store/Products";
+import Button from "../../ui/Button/Button";
+import Products from "../../store/Products";
 import {observer} from "mobx-react-lite";
 
 interface CartProps{

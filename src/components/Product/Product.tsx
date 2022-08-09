@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './Product.module.sass'
 import image1 from '../Category/ProductCard/images/Image.png'
-import Button from "../ui/Button/Button";
+import Button from "../../ui/Button/Button";
 
 const Product = () => {
     return (

@@ -1,6 +1,6 @@
 import React, {FC, useState} from 'react';
 import style from './CartItem.module.sass'
-import Product from "../../types";
+import Product from "../../../types";
 
 interface CartItemProps{
     product: Product
@@ -46,7 +46,7 @@ const CartItem:FC<CartItemProps> = ({product, amount}) => {
                         pattern='*'
                         className={style['count-input']}
                         value={itemsCount}
-                        onChange={e=>setItemsCount(+e.target.value)}/>
+                        onChange={e=>setItemsCount(+e.target. value)}/>
                     <button
                         className={style['count-button']}
                         onClick={()=>setItemsCount(prev=>prev === 0?prev:prev - 1)}>

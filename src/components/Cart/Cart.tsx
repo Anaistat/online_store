@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './Cart.module.sass'
 import CartItem from "./CartItem/CartItem";
-import Products from "../store/Products";
+import Products from "../../store/Products";
 
 const Cart = () => {
     return (
